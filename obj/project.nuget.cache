@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "u5tD6auGICUwz7AwN0b3UTVYG0Hvi07rvLwA4zYJL/sTC40LqRGdkFLfzU3vocRvi/Np/Me0ntIq5XRYdRoreA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\PanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Andres\\.nuget\\packages\\easymodbuscore\\1.0.0\\easymodbuscore.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
