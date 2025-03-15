@@ -8,15 +8,15 @@ WORKDIR /app
 
 # Copia el archivo de proyecto y restaura las dependencias
 COPY *.csproj ./
-RUN dotnet restore
+RUN dotnet restore --disable-parallel
 
 # Copia el resto del código fuente y compila la aplicación
 COPY . ./
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish -c Release -o /app/publish -r linux-arm64 --self-contained false
 
 # Usa una imagen más ligera solo con el runtime para ejecutar la app (versión ARM64)
-#FROM mcr.microsoft.com/dotnet/runtime:6.0-bookworm-slim-arm64v8 AS runtime
-FROM mcr.microsoft.com/dotnet/runtime:6.0 AS runtime
+FROM mcr.microsoft.com/dotnet/runtime:6.0-bookworm-slim-arm64v8 AS runtime
+
 
 # Establece el directorio de trabajo del contenedor
 WORKDIR /app
