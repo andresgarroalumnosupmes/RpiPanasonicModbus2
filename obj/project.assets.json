@@ -38,11 +38,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\PanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+      "projectUniqueName": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
       "projectName": "PanasonicModbus2",
-      "projectPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\PanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+      "projectPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
       "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\PanasonicModbusCsharp2\\PanasonicModbus2\\obj\\",
+      "outputPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicModbusCsharp2\\PanasonicModbus2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
