@@ -25,14 +25,14 @@ class Program
 
 
             // Container Name of the LISTENER Point
-            ////string nameContainerListener = "RpiTemperatureSensorModule"; 
+            string nameContainerListener = "RpiTemperatureSensorModule"; 
             
             // Dns.GetHostAddresses gets IP address of the container in the Docker network.
             //Socket is EXPOSED in port 8888
-            /////IPEndPoint ListernerPoint1 = new IPEndPoint(Dns.GetHostAddresses(nameContainerListener)[0], 8888);
+            IPEndPoint ListernerPoint1 = new IPEndPoint(Dns.GetHostAddresses(nameContainerListener)[0], 8888);
             //
-            IPAddress ipServidor1 = IPAddress.Parse("172.19.0.3");
-            IPEndPoint ListernerPoint1 = new IPEndPoint(ipServidor1, 8888);
+            //IPAddress ipServidor1 = IPAddress.Parse("172.19.0.3");
+            //IPEndPoint ListernerPoint1 = new IPEndPoint(ipServidor1, 8888);
 
             // Create a SOCKET TCP/IP to SEND Plc DATA
             Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
