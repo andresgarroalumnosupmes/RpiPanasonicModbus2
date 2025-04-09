@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RCYekXmKiqKLQbyUCSvIN7GJU6yy0UxFK4z6mArZSqrS8n7OFvOMsJqS1ZJOISB2Sf4pMNkYMAu91NqdkyqG2w==",
+  "dgSpecHash": "GE4Cc1P/jdKf6dAqU7Q0Wh4wK6OJaVAxjPij3rD/yrrf6+8fXjZ4RHgn7c5BMAA9pdHvwGdRxSKSxZIfIWFP8w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+  "projectFilePath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andres\\.nuget\\packages\\easymodbuscore\\1.0.0\\easymodbuscore.1.0.0.nupkg.sha512"
   ],
