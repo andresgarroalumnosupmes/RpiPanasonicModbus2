@@ -57,8 +57,8 @@ class Program
                     Console.WriteLine($"Date Time: {DateTime.Now} - Value of Register {startAddress}: {registers[0]}");
                     Console.WriteLine("Data sent: {0}", registers[0]); 
                     
-                    // Wait for 3 seconds before the next reading 
-                    Thread.Sleep(3000);
+                    // Wait for 1 seconds before the next reading 
+                    Thread.Sleep(1000);
                 }
             }
             catch (Exception e)
