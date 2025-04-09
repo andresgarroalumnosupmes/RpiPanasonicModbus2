@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 # Establece el directorio de trabajo del contenedor
 WORKDIR /app
 
+# Socket port from the Listener (IoTEdge,) will listen
+EXPOSE 8888
+
 # Copia el archivo de proyecto y restaura las dependencias. Evita que se ejecuten varias dependencias en paralelo
 COPY *.csproj ./
 RUN dotnet restore --disable-parallel
