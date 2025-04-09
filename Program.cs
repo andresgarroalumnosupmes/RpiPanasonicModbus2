@@ -31,14 +31,16 @@ class Program
             //Socket is EXPOSED in port 8888
             /////IPEndPoint ListernerPoint1 = new IPEndPoint(Dns.GetHostAddresses(nameContainerListener)[0], 8888);
             //
+            IPAddress ipServidor1 = IPAddress.Parse("172.19.0.3");
+            IPEndPoint ListernerPoint1 = new IPEndPoint(ipServidor1, 8888);
 
             // Create a SOCKET TCP/IP to SEND Plc DATA
-            ////Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 // Connect to the LISTENER POINT
-                ////sender.Connect(ListernerPoint1);    
-                ////Console.WriteLine("Connected a {0}", sender.RemoteEndPoint);
+                sender.Connect(ListernerPoint1);    
+                Console.WriteLine("Connected a {0}", sender.RemoteEndPoint);
                 
                 while(true)
                 {
@@ -49,11 +51,11 @@ class Program
                     byte[] bytes = BitConverter.GetBytes(registers[0]);
                 
                     // Send the data through the Socket
-                    ////int bytesSent = sender.Send(bytes);
+                    int bytesSent = sender.Send(bytes);
 
                     Console.WriteLine("SERVER SOCKET of the PLC Container SENDING!");
                     Console.WriteLine($"Date Time: {DateTime.Now} - Value of Register {startAddress}: {registers[0]}");
-                    //Console.WriteLine("Data sent: {0}", registers[0]); 
+                    Console.WriteLine("Data sent: {0}", registers[0]); 
                     
                     // Wait for 3 seconds before the next reading 
                     Thread.Sleep(3000);
@@ -66,13 +68,13 @@ class Program
             //If there is a error in the loop and the loop ends, the connection is closed
             finally
             {
-                /*
+                
                 if (sender.Connected)
                 {
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();
                     Console.WriteLine("Connection closed for PLC Container.");
-                }*/
+                }
             }
         }
         catch (Exception ex)
