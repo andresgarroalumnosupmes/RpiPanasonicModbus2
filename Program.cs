@@ -1,12 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+
 using System;
 using System.Threading;
-using System.Net;
-using System.Net.Sockets; //Import Sockets
-using System.Text;
-using EasyModbus; // Imports EasyModbusCore
-
+using EasyModbus; // Packet for Modbus connection - Import EasyModbusCore
+using MQTTnet; //Packet for MQTT connection
+using MQTTnet.Client;
+using System.Text.Json;
 class Program
 {
     static void Main()
@@ -17,78 +17,93 @@ class Program
 
         // Creation of the client Modbus TCP
         ModbusClient modbusClient = new ModbusClient(ipAddress, port);
+
+        // setting MQTT
+        var mqttFactory = new MqttFactory();
+        var mqttClient = mqttFactory.CreateMqttClient();
+        var mqttOptions = new MqttClientOptionsBuilder()
+            .WithClientId($"ModbusMqttClient-{Guid.NewGuid()}")
+            .WithTcpServer("localhost", 1884)
+            .Build();
+        
         try
         {
-            // Connecting to Modbus Server
-            modbusClient.Connect(); 
+            // Connect to Modbus
             Console.WriteLine($"Connecting a {ipAddress}:{port}");
+            modbusClient.Connect(); // Connecting to Modbus Server
+            Console.WriteLine("Modbus Connection established");
 
+            // Connect to MQTT
+            Console.WriteLine("Connecting to broker MQTT...");
+            mqttClient.ConnectAsync(mqttOptions).Wait();
+            Console.WriteLine("MQTT Connection established");
 
-            // Container Name of the LISTENER Point
-            string nameContainerListener = "RpiTemperatureSensorModule"; 
-            
-            // Dns.GetHostAddresses gets IP address of the container in the Docker network.
-            //Socket is EXPOSED in port 8888
-            IPEndPoint ListernerPoint1 = new IPEndPoint(Dns.GetHostAddresses(nameContainerListener)[0], 8888);
-            //
-            //IPAddress ipServidor1 = IPAddress.Parse("172.19.0.3");
-            //IPEndPoint ListernerPoint1 = new IPEndPoint(ipServidor1, 8888);
-
-            // Create a SOCKET TCP/IP to SEND Plc DATA
-            Socket sender = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            try
+            while(true)
             {
-                // Connect to the LISTENER POINT
-                sender.Connect(ListernerPoint1);    
-                Console.WriteLine("Connected a {0}", sender.RemoteEndPoint);
-                
-                while(true)
+                try
                 {
                     int startAddress = 0;  // Address of the Input register which will be read
                     int[] registers = modbusClient.ReadInputRegisters(startAddress, 1); // Reading 1 register
+                    int registerValue = registers[0];
 
-                    // Convert the integer to array of bytes
-                    byte[] bytes = BitConverter.GetBytes(registers[0]);
-                
-                    // Send the data through the Socket
-                    int bytesSent = sender.Send(bytes);
+                    Console.WriteLine($"Date Time: {DateTime.Now} - Value of Register {startAddress}: {registerValue}");
 
-                    Console.WriteLine("SERVER SOCKET of the PLC Container SENDING!");
-                    Console.WriteLine($"Date Time: {DateTime.Now} - Value of Register {startAddress}: {registers[0]}");
-                    Console.WriteLine("Data sent: {0}", registers[0]); 
+                    // Creating MQTT message with the register data 
+                    var data = new
+                    {
+                        sensor_id="sensorTemperature01",
+                        value = registerValue,
+                        unit = "C",
+                        timestamp = DateTime.Now.ToString("o")
+                    };
+                    string jsonPayload = JsonSerializer.Serialize(data);
+
+                    // Build and publish an MQTT message
+                    var mqttMessage = new MqttApplicationMessageBuilder()
+                        .WithTopic("plant01/plc01/modbus/sensor01/temperature")
+                        .WithPayload(jsonPayload)
+                        .Build();
                     
-                    // Wait for 1 seconds before the next reading 
-                    Thread.Sleep(1000);
+                    mqttClient.PublishAsync(mqttMessage).Wait();
+                    Console.WriteLine($"Mensaje publicado: {jsonPayload}");
+
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error: " + e.Message);
-            }
-            //If there is a error in the loop and the loop ends, the connection is closed
-            finally
-            {
-                
-                if (sender.Connected)
+                catch (Exception ex)
                 {
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
-                    Console.WriteLine("Connection closed for PLC Container.");
-                }
+                    Console.WriteLine($"Error during reading Modbus register or publishing MQTT message: {ex.Message}");
+                }  
+                
+                // wait for 2 seconds before the next reading 
+                Thread.Sleep(2000);
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error: {ex.Message}");
+            Console.WriteLine($"General Error: {ex.Message}");
         }
+        
         // Closing the connection regardeless of if there was an exceptsion or not
          finally
         {
             modbusClient.Disconnect();// Closing connection
             Console.WriteLine("Connection closed.");
+            // Desconnect both clientes
+            if (modbusClient.Connected)
+            {
+                modbusClient.Disconnect();
+                Console.WriteLine("Disconnect from Modbus");
+            }
+            
+            if (mqttClient.IsConnected)
+            {
+                mqttClient.DisconnectAsync().Wait();
+                Console.WriteLine("Disconnect from MQTT");
+            }
         }
     }
 }
+
+
 
 
 

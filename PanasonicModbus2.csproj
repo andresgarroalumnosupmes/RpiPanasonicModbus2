@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="EasyModbusCore" Version="1.0.0" />
+    <PackageReference Include="MQTTnet" Version="4.3.1.873" />
   </ItemGroup>
 
 </Project>

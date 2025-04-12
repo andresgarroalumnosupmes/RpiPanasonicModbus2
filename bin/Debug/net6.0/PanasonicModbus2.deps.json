@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "PanasonicModbus2/1.0.0": {
         "dependencies": {
-          "EasyModbusCore": "1.0.0"
+          "EasyModbusCore": "1.0.0",
+          "MQTTnet": "4.3.1.873"
         },
         "runtime": {
           "PanasonicModbus2.dll": {}
@@ -19,6 +20,14 @@
           "lib/net6.0/EasyModbus.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "MQTTnet/4.3.1.873": {
+        "runtime": {
+          "lib/net6.0/MQTTnet.dll": {
+            "assemblyVersion": "4.3.1.873",
+            "fileVersion": "4.3.1.873"
           }
         }
       }
@@ -36,6 +45,13 @@
       "sha512": "sha512-y+nXh7jzrSvRfSHiTqnqr+goWCJQoAwtyzKAuabX7MlR5dy1JZba52FbsJW//iok8p++aNm7TOUVRNgBskiiBQ==",
       "path": "easymodbuscore/1.0.0",
       "hashPath": "easymodbuscore.1.0.0.nupkg.sha512"
+    },
+    "MQTTnet/4.3.1.873": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5Btmzjv9TWQewlHL6QPB3/deTxAfHf0cR1ixehH/4311oKUpiYrgt1uQZFTbyBWjR7zVKv1U3+s4o3IPm/++Ww==",
+      "path": "mqttnet/4.3.1.873",
+      "hashPath": "mqttnet.4.3.1.873.nupkg.sha512"
     }
   }
 }

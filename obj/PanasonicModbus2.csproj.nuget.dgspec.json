@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj": {}
+    "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj": {
+    "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+        "projectUniqueName": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
         "projectName": "PanasonicModbus2",
-        "projectPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+        "projectPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
         "packagesPath": "C:\\Users\\Andres\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\obj\\",
+        "outputPath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Andres\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "EasyModbusCore": {
               "target": "Package",
               "version": "[1.0.0, )"
+            },
+            "MQTTnet": {
+              "target": "Package",
+              "version": "[4.3.1.873, )"
             }
           },
           "imports": [

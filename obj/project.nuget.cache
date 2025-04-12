@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "GE4Cc1P/jdKf6dAqU7Q0Wh4wK6OJaVAxjPij3rD/yrrf6+8fXjZ4RHgn7c5BMAA9pdHvwGdRxSKSxZIfIWFP8w==",
+  "dgSpecHash": "UcZ/bcE5/xIJEjkqZ7oQ4S7khAe7p42ZrZ6U5QDLIJbA5wDGq3hAyXTQxfnQrlN6SFugr2mR3QkOp8Mfm47BgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiIoTPanasonicModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
+  "projectFilePath": "C:\\Users\\Andres\\Desktop\\MASTER_IOT\\TFM\\Csharp\\RpiPanasonicMqttModbusCsharp2\\PanasonicModbus2\\PanasonicModbus2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Andres\\.nuget\\packages\\easymodbuscore\\1.0.0\\easymodbuscore.1.0.0.nupkg.sha512"
+    "C:\\Users\\Andres\\.nuget\\packages\\easymodbuscore\\1.0.0\\easymodbuscore.1.0.0.nupkg.sha512",
+    "C:\\Users\\Andres\\.nuget\\packages\\mqttnet\\4.3.1.873\\mqttnet.4.3.1.873.nupkg.sha512"
   ],
   "logs": []
 }
