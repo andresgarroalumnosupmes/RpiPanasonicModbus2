@@ -18,12 +18,13 @@ class Program
         // Creation of the client Modbus TCP
         ModbusClient modbusClient = new ModbusClient(ipAddress, port);
 
+        //.WithTcpServer("localhost", 1884)
         // setting MQTT
         var mqttFactory = new MqttFactory();
         var mqttClient = mqttFactory.CreateMqttClient();
         var mqttOptions = new MqttClientOptionsBuilder()
             .WithClientId($"ModbusMqttClient-{Guid.NewGuid()}")
-            .WithTcpServer("localhost", 1884)
+            .WithTcpServer("172.17.0.3", 1884)
             .Build();
         
         try
