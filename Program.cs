@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-using EasyModbus; // Packet for Modbus connection - Import EasyModbusCore
+using EasyModbus; // Packet for Modbus connection - Import EasyModbusCore. Establish communication to PLC PANASONIC 
 using MQTTnet; //Packet for MQTT connection
 using MQTTnet.Client;
 using System.Text.Json;
@@ -38,7 +38,7 @@ class Program
 
             /////////////////////////////////////////////////////////////////////////////////////////
             // MQTT handlers
-
+            
             // Register handlers before connecting
             mqttClient.ConnectedAsync += async e =>
             {
@@ -122,7 +122,7 @@ class Program
                 }  
                 
                 // wait for 2 seconds before the next reading 
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
             }
         }
         catch (Exception ex)
@@ -131,7 +131,7 @@ class Program
         }
         
         // Closing the connection regardeless of if there was an exceptsion or not
-         finally
+        finally
         {
             modbusClient.Disconnect();// Closing connection
             Console.WriteLine("Connection closed.");
