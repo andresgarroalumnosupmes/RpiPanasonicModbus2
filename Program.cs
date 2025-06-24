@@ -122,7 +122,7 @@ class Program
                 }  
                 
                 // wait for 2 seconds before the next reading 
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
             }
         }
         catch (Exception ex)
