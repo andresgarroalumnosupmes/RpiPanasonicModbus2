@@ -122,7 +122,7 @@ class Program
                 }
 
                 // wait for 2 seconds before the next reading
-                int samplingTime= 3000;
+                int samplingTime= 2000;
                 Console.WriteLine($"Sampling Time: {samplingTime}\n"); 
                 Thread.Sleep(samplingTime);
             }
