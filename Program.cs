@@ -119,10 +119,12 @@ class Program
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Error during reading Modbus register or publishing MQTT message: {ex.Message}");
-                }  
-                
-                // wait for 2 seconds before the next reading 
-                Thread.Sleep(3000);
+                }
+
+                // wait for 2 seconds before the next reading
+                int samplingTime= 2000;
+                Console.WriteLine($"Sampling Time: {samplingTime}\n"); 
+                Thread.Sleep(samplingTime);
             }
         }
         catch (Exception ex)
